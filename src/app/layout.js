@@ -1,13 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Gudea} from "next/font/google";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const gudea = Gudea({
+  weight: ["400", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-gudea",
 });
 
 export const metadata = {
@@ -16,13 +14,16 @@ export const metadata = {
     "Browse a list of breeds, view pictures, and learn about each dog’s size, personality, activity level, and care needs.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${gudea.variable} h-full antialiased`}>
+      <body className="bg-gray-900">
+        <main className="min-h-full flex flex-col max-w-md m-auto">
+          <Header />
+          {children}
+          <Footer />
+        </main>
+      </body>
     </html>
   );
 }
